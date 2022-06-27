@@ -18,7 +18,7 @@ final class ChatCell: UICollectionViewCell {
     return $0
   }(ReactionLayout())
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-  
+  var heightReactions = NSLayoutConstraint()
   let nameLabel: UILabel = {
     $0.text = "nastya_shuller"
     $0.font = .boldSystemFont(ofSize: 14)
@@ -56,7 +56,7 @@ final class ChatCell: UICollectionViewCell {
     $0.distribution = .fill
     $0.alignment = .fill
     $0.spacing = 5
-    return $0 } (UIStackView(arrangedSubviews: [nameLabel, messageImageView, messageLabel]))
+    return $0 } (UIStackView(arrangedSubviews: [nameLabel, messageImageView, messageLabel, collectionView]))
   
   func setupView() {
     collectionView.backgroundColor = .clear
@@ -70,7 +70,6 @@ final class ChatCell: UICollectionViewCell {
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    collectionView.frame.size = CGSize(width: 300, height: 200)
     setupView()
     setupConstraints()
   }
@@ -80,6 +79,9 @@ final class ChatCell: UICollectionViewCell {
   }
   
   func setupConstraints() {
+    
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    heightReactions = collectionView.heightAnchor.constraint(equalToConstant: 30)
     NSLayoutConstraint.activate([
       messageImageView.heightAnchor.constraint(equalToConstant: 150),
       containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -96,13 +98,13 @@ final class ChatCell: UICollectionViewCell {
       stack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
       stack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
       stack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
+      
+      heightReactions
     ])
   }
   func configure(with message: Message) {
     self.message = message
     messageLabel.text = message.text
-
-    print(collectionView.frame.size)
   }
   
   override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
@@ -130,17 +132,9 @@ extension ChatCell: UICollectionViewDataSource {
 // MARK: - Preview
 struct ViewControllerSUI: UIViewControllerRepresentable {
   func makeUIViewController(context: Context) -> ViewController {
-    let viewcontroller = ViewController()
-    return viewcontroller
+    ViewController()
   }
-  
-  func updateUIViewController(_ uiViewController: ViewController, context: Context) {
-    
-  }
-  
-  typealias UIViewControllerType = ViewController
-  
-  
+  func updateUIViewController(_ uiViewController: ViewController, context: Context) {}
 }
 
 struct ContentView_Previews: PreviewProvider {
@@ -169,6 +163,6 @@ extension ChatCell: ReactionLayoutDelegate {
   }
   
   func configureUI(with height: CGFloat) {
-    
+    heightReactions.constant = height
   }
 }
