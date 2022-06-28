@@ -10,6 +10,7 @@ import SwiftUI
 
 // MARK: - ChatCell
 final class ChatCell: UICollectionViewCell {
+  var layoutHeight: CGFloat = 0.0
   static let identifier = "ChatCell"
   var message = Message()
   let cellLeftRightPadding: CGFloat = 32.0
@@ -18,7 +19,6 @@ final class ChatCell: UICollectionViewCell {
     return $0
   }(ReactionLayout())
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-  var heightReactions = NSLayoutConstraint()
   let nameLabel: UILabel = {
     $0.text = "nastya_shuller"
     $0.font = .boldSystemFont(ofSize: 14)
@@ -79,9 +79,7 @@ final class ChatCell: UICollectionViewCell {
   }
   
   func setupConstraints() {
-    
     collectionView.translatesAutoresizingMaskIntoConstraints = false
-    heightReactions = collectionView.heightAnchor.constraint(equalToConstant: 30)
     NSLayoutConstraint.activate([
       messageImageView.heightAnchor.constraint(equalToConstant: 150),
       containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
@@ -99,12 +97,14 @@ final class ChatCell: UICollectionViewCell {
       stack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
       stack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
       
-      heightReactions
+      collectionView.heightAnchor.constraint(equalToConstant: 30)
     ])
+    
   }
   func configure(with message: Message) {
     self.message = message
     messageLabel.text = message.text
+
   }
   
   override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
@@ -145,24 +145,38 @@ struct ContentView_Previews: PreviewProvider {
 }
 
 extension ChatCell: ReactionLayoutDelegate {
-  func collectionView(_ collectionView: UICollectionView, sizeForReactionAtIndexPath indexPath: IndexPath) -> CGSize {
-    let reaction = message.reactions[indexPath.item]
-    
-    let referenceSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: ReactionCell.height)
-    let calculatedSize = (reaction as NSString).boundingRect(with: referenceSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)], context: nil)
-    let size = CGSize(width: calculatedSize.width + cellLeftRightPadding, height: ReactionCell.height)
-    return size
+  var reactionsHeight: CGFloat {
+    get { layoutHeight }
+    set { layoutHeight = newValue }
   }
-  
-  func collectionView(_ collectionView: UICollectionView, insetsForItemsInSection section: Int) -> UIEdgeInsets {
-    UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+
+  func collectionView(_ collectionView: UICollectionView, itemCacheForItemsInSection section: Int) -> [UICollectionViewLayoutAttributes] {
+    var itemCache: [UICollectionViewLayoutAttributes] = []
+    var layoutHeight = 0.0
+    var layoutWidthIterator = 0.0
+    let insets = UIEdgeInsets(top: 0.0, left: 0.0, bottom: 0.0, right: 0.0)
+    let interItemSpacing = 5.0
+    var itemSize: CGSize = .zero
+    for item in 0..<message.reactions.count {
+      let reaction = message.reactions[item]
+      let referenceSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: ReactionCell.height)
+      let calculatedSize = (reaction as NSString).boundingRect(with: referenceSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedString.Key.font: UIFont.systemFont(ofSize: 12.0)], context: nil)
+      let size = CGSize(width: calculatedSize.width + cellLeftRightPadding, height: ReactionCell.height)
+      itemSize = size
+      if (layoutWidthIterator + itemSize.width + insets.left + insets.right) > collectionView.frame.width {
+        layoutWidthIterator = 0.0
+        layoutHeight += itemSize.height + interItemSpacing
+      }
+      let frame = CGRect(x: layoutWidthIterator + insets.left, y: layoutHeight, width: itemSize.width, height: itemSize.height)
+      let indexPath = IndexPath(item: item, section: 0)
+      let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
+      attributes.frame = frame
+      itemCache.append(attributes)
+      layoutWidthIterator = layoutWidthIterator + frame.width + interItemSpacing
+    }
+    layoutHeight += itemSize.height + insets.bottom
+    self.layoutHeight = layoutHeight
+    return itemCache
   }
-  
-  func collectionView(_ collectionView: UICollectionView, itemSpacingInSection section: Int) -> CGFloat {
-    5
-  }
-  
-  func configureUI(with height: CGFloat) {
-    heightReactions.constant = height
-  }
+
 }

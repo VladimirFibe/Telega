@@ -8,40 +8,21 @@
 import UIKit
 
 protocol ReactionLayoutDelegate: AnyObject {
-  func collectionView(_ collectionView: UICollectionView, sizeForReactionAtIndexPath indexPath: IndexPath) -> CGSize
-  func collectionView(_ collectionView: UICollectionView, insetsForItemsInSection section: Int) -> UIEdgeInsets
-  func collectionView(_ collectionView: UICollectionView, itemSpacingInSection section: Int) -> CGFloat
-  func configureUI(with height: CGFloat)
+  func collectionView(_ collectionView: UICollectionView, itemCacheForItemsInSection section: Int) -> [UICollectionViewLayoutAttributes]
+  var reactionsHeight: CGFloat { get set}
 }
 
 class ReactionLayout: UICollectionViewLayout {
   weak var delegate: ReactionLayoutDelegate?
-  var layoutHeight = 0.0
+  var layoutHeight: CGFloat = 0.0
   private var itemCache: [UICollectionViewLayoutAttributes] = []
   
   override func prepare() {
     itemCache.removeAll()
     guard let collectionView = collectionView else { return }
-    var layoutWidthIterator: CGFloat = 0.0
-    let insets: UIEdgeInsets = delegate?.collectionView(collectionView, insetsForItemsInSection: 0) ?? UIEdgeInsets.zero
-    let interItemSpacing: CGFloat = delegate?.collectionView(collectionView, itemSpacingInSection: 0) ?? 0.0
-    var itemSize: CGSize = .zero
-    for item in 0..<collectionView.numberOfItems(inSection: 0) {
-      let indexPath = IndexPath(item: item, section: 0)
-      itemSize = delegate?.collectionView(collectionView, sizeForReactionAtIndexPath: indexPath) ?? .zero
-      if (layoutWidthIterator + itemSize.width + insets.left + insets.right) > collectionView.frame.width {
-        layoutWidthIterator = 0.0
-        layoutHeight += itemSize.height + interItemSpacing
-      }
-      let frame = CGRect(x: layoutWidthIterator + insets.left, y: layoutHeight, width: itemSize.width, height: itemSize.height)
-      let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-      attributes.frame = frame
-      itemCache.append(attributes)
-      layoutWidthIterator = layoutWidthIterator + frame.width + interItemSpacing
-    }
-    layoutHeight += itemSize.height + insets.bottom
-    delegate?.configureUI(with: layoutHeight)
-  }
+    itemCache = delegate?.collectionView(collectionView, itemCacheForItemsInSection: 0) ?? []
+    layoutHeight = delegate?.reactionsHeight ?? 0
+   }
   
   override func layoutAttributesForElements(in rect: CGRect)-> [UICollectionViewLayoutAttributes]? {
     super.layoutAttributesForElements(in: rect)
