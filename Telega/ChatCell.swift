@@ -8,17 +8,19 @@
 import UIKit
 import SwiftUI
 
-// MARK: - ChatCell
 final class ChatCell: UICollectionViewCell {
-  var layoutHeight: CGFloat = 0.0
   static let identifier = "ChatCell"
   var message = Message()
+  var layoutHeight: CGFloat = 0.0
   let cellLeftRightPadding: CGFloat = 32.0
+  
   lazy var layout: ReactionLayout = {
     $0.delegate = self
     return $0
   }(ReactionLayout())
+  
   lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+  
   let nameLabel: UILabel = {
     $0.text = "nastya_shuller"
     $0.font = .boldSystemFont(ofSize: 14)
@@ -34,7 +36,6 @@ final class ChatCell: UICollectionViewCell {
   }(UIImageView(image: UIImage(named: "woman")))
   
   let bubbleImageView: UIImageView = {
-    $0.translatesAutoresizingMaskIntoConstraints = false
     $0.tintColor = UIColor(white: 0.9, alpha: 1)
     return $0
   }(UIImageView(image: UIImage(named: "bubble_gray")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26))
@@ -46,12 +47,10 @@ final class ChatCell: UICollectionViewCell {
   }(UILabel())
   
   let containerView: UIView = {
-    $0.translatesAutoresizingMaskIntoConstraints = false
     return $0
   }(UIView())
   
   lazy var stack: UIStackView = {
-    $0.translatesAutoresizingMaskIntoConstraints = false
     $0.axis = .vertical
     $0.distribution = .fill
     $0.alignment = .fill
@@ -79,32 +78,32 @@ final class ChatCell: UICollectionViewCell {
   }
   
   func setupConstraints() {
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      messageImageView.heightAnchor.constraint(equalToConstant: 150),
-      containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-      containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
-      containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: 0),
-      containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-
-      bubbleImageView.topAnchor.constraint(equalTo: containerView.topAnchor),
-      bubbleImageView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor),
-      bubbleImageView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-      bubbleImageView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
-      
-      stack.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 10),
-      stack.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 20),
-      stack.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -10),
-      stack.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: -10),
-      
-      collectionView.heightAnchor.constraint(equalToConstant: 30)
-    ])
+    messageImageView.snp.makeConstraints {
+      $0.height.equalTo(150)
+    }
     
+    containerView.snp.makeConstraints {
+      $0.top.bottom.leading.trailing.equalToSuperview()
+    }
+    
+    bubbleImageView.snp.makeConstraints {
+      $0.top.bottom.leading.trailing.equalToSuperview()
+    }
+    
+    stack.snp.makeConstraints {
+      $0.top.equalToSuperview().offset(10)
+      $0.leading.equalToSuperview().offset(20)
+      $0.bottom.equalToSuperview().inset(10)
+      $0.trailing.equalToSuperview().inset(10)
+    }
+    collectionView.snp.makeConstraints {
+      $0.height.equalTo(30)
+    }
   }
+  
   func configure(with message: Message) {
     self.message = message
     messageLabel.text = message.text
-
   }
   
   override func preferredLayoutAttributesFitting(_ layoutAttributes: UICollectionViewLayoutAttributes) -> UICollectionViewLayoutAttributes {
@@ -116,7 +115,7 @@ final class ChatCell: UICollectionViewCell {
   }
 }
 
-// MARK: -
+// MARK: - UICollectionViewDataSource
 extension ChatCell: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     message.reactions.count
@@ -129,21 +128,8 @@ extension ChatCell: UICollectionViewDataSource {
     return cell
   }
 }
-// MARK: - Preview
-struct ViewControllerSUI: UIViewControllerRepresentable {
-  func makeUIViewController(context: Context) -> ViewController {
-    ViewController()
-  }
-  func updateUIViewController(_ uiViewController: ViewController, context: Context) {}
-}
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewControllerSUI()
-        .ignoresSafeArea()
-    }
-}
-
+// MARK: - ReactionLayoutDelegate
 extension ChatCell: ReactionLayoutDelegate {
   var reactionsHeight: CGFloat {
     get { layoutHeight }
@@ -176,7 +162,22 @@ extension ChatCell: ReactionLayoutDelegate {
     }
     layoutHeight += itemSize.height + insets.bottom
     self.layoutHeight = layoutHeight
+    collectionView.reloadData()
     return itemCache
   }
+}
 
+// MARK: - Preview
+struct ViewControllerSUI: UIViewControllerRepresentable {
+  func makeUIViewController(context: Context) -> ViewController {
+    ViewController()
+  }
+  func updateUIViewController(_ uiViewController: ViewController, context: Context) {}
+}
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ViewControllerSUI()
+        .ignoresSafeArea()
+    }
 }
