@@ -36,7 +36,6 @@ class ViewController: UIViewController {
     view.backgroundColor = .lightGray
     collectionView.dataSource = self
     collectionView.register(ChatCell.self, forCellWithReuseIdentifier: ChatCell.identifier)
-    collectionView.reloadData()
   }
   
   func setupConstraints() {

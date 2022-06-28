@@ -162,22 +162,6 @@ extension ChatCell: ReactionLayoutDelegate {
     }
     layoutHeight += itemSize.height + insets.bottom
     self.layoutHeight = layoutHeight
-    collectionView.reloadData()
     return itemCache
   }
-}
-
-// MARK: - Preview
-struct ViewControllerSUI: UIViewControllerRepresentable {
-  func makeUIViewController(context: Context) -> ViewController {
-    ViewController()
-  }
-  func updateUIViewController(_ uiViewController: ViewController, context: Context) {}
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ViewControllerSUI()
-        .ignoresSafeArea()
-    }
 }
