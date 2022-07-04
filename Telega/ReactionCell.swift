@@ -11,10 +11,15 @@ import SnapKit
 class ReactionCell: UICollectionViewCell {
   static let identifier = "ReactionCell"
   static let height = 30.0
-  
+  var reaction: String? {
+    didSet {
+      if let reaction = reaction {
+        labelText.text = reaction
+      }
+    }
+  }
   let labelText: UILabel = {
     $0.font = .systemFont(ofSize: 12)
-    $0.translatesAutoresizingMaskIntoConstraints = false
     return $0
   }(UILabel())
 
@@ -38,9 +43,6 @@ class ReactionCell: UICollectionViewCell {
       $0.centerX.centerY.equalToSuperview()
     }
   }
-  
-  func configure(with reaction: String) {
-    labelText.text = reaction
-  }
+
 }
 

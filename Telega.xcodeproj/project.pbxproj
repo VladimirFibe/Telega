@@ -13,6 +13,8 @@
 		E925598F2869918000939E8B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925598E2869918000939E8B /* Message.swift */; };
 		E92559932869928200939E8B /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E92559922869928200939E8B /* ChatCell.swift */; };
 		E925599728699FA300939E8B /* ReactionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925599628699FA300939E8B /* ReactionLayout.swift */; };
+		E9642FB42872C70D0088FBDF /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9642FB32872C70D0088FBDF /* MessageCell.swift */; };
+		E9642FB62872C75B0088FBDF /* MessageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9642FB52872C75B0088FBDF /* MessageHeaderView.swift */; };
 		E97B02672868DB8F00E5F4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B02662868DB8F00E5F4A5 /* AppDelegate.swift */; };
 		E97B02692868DB8F00E5F4A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B02682868DB8F00E5F4A5 /* SceneDelegate.swift */; };
 		E97B026B2868DB8F00E5F4A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B026A2868DB8F00E5F4A5 /* ViewController.swift */; };
@@ -27,6 +29,8 @@
 		E925598E2869918000939E8B /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		E92559922869928200939E8B /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		E925599628699FA300939E8B /* ReactionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionLayout.swift; sourceTree = "<group>"; };
+		E9642FB32872C70D0088FBDF /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		E9642FB52872C75B0088FBDF /* MessageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHeaderView.swift; sourceTree = "<group>"; };
 		E97B02632868DB8F00E5F4A5 /* Telega.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Telega.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E97B02662868DB8F00E5F4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E97B02682868DB8F00E5F4A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +76,8 @@
 				E97B02682868DB8F00E5F4A5 /* SceneDelegate.swift */,
 				E97B026A2868DB8F00E5F4A5 /* ViewController.swift */,
 				E925598E2869918000939E8B /* Message.swift */,
+				E9642FB32872C70D0088FBDF /* MessageCell.swift */,
+				E9642FB52872C75B0088FBDF /* MessageHeaderView.swift */,
 				E92559922869928200939E8B /* ChatCell.swift */,
 				E9229C2E286AEE920096788E /* ChatFlowLayout.swift */,
 				E925599628699FA300939E8B /* ReactionLayout.swift */,
@@ -169,6 +175,8 @@
 				E9229C2F286AEE920096788E /* ChatFlowLayout.swift in Sources */,
 				E97B02692868DB8F00E5F4A5 /* SceneDelegate.swift in Sources */,
 				E92559932869928200939E8B /* ChatCell.swift in Sources */,
+				E9642FB42872C70D0088FBDF /* MessageCell.swift in Sources */,
+				E9642FB62872C75B0088FBDF /* MessageHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
