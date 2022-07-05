@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class MessageCell: UICollectionViewCell, SelfConfiguringMessage {
+class MessageCell: UICollectionViewCell {
   static var reuseIdentifier: String = "MessageCell"
   let title: UILabel = {
     $0.font = .commissioner12()
