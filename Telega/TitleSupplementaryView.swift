@@ -10,11 +10,11 @@ import SnapKit
 
 class TitleSupplementaryView: UICollectionReusableView {
   let avatarImageView: UIImageView = {
-    $0.layer.cornerRadius = 15.0
+    $0.layer.cornerRadius = 18.0
     $0.clipsToBounds = true
     $0.translatesAutoresizingMaskIntoConstraints = false
-    $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
-    $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    $0.widthAnchor.constraint(equalToConstant: 36).isActive = true
+    $0.heightAnchor.constraint(equalToConstant: 36).isActive = true
     return $0
   }(UIImageView(image: UIImage(named: "woman")))
   let nameLabel: UILabel = {
@@ -108,10 +108,15 @@ class TitleSupplementaryView: UICollectionReusableView {
     }
   }
   func configure(with kind: String, message: Message) {
+    
     if kind == ElementKind.sectionHeader {
       setupHeaderViews()
       content.text = message.text
+      content.textColor = message.me ? .white : .black
+      titleView.isHidden = message.me
     } else {
+      avatarImageView.isHidden = message.me
+      timeLabel.textColor = message.me ? .white : .black
       setupFooterViews()
     }
   }

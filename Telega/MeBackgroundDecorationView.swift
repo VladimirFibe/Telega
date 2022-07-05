@@ -11,7 +11,7 @@ class MeBackgroundDecorationView: UICollectionReusableView {
   static let reuseIdentifier = "MeBackgroundDecorationView"
 
   let bubbleImageView: UIImageView = {
-    $0.tintColor = .blue // UIColor(white: 0.9, alpha: 1)
+    $0.tintColor = #colorLiteral(red: 0.1386205554, green: 0.5254366994, blue: 0.9542812705, alpha: 1)
     return $0
   }(UIImageView(image: UIImage(named: "bubble_blue")!.resizableImage(withCapInsets: UIEdgeInsets(top: 22, left: 26, bottom: 22, right: 26))
     .withRenderingMode(.alwaysTemplate)))

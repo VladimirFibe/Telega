@@ -13,7 +13,7 @@ struct Message: Hashable {
   var reactions = [Reaction]()
   let id = UUID()
   static var all = [
-    Message(me: true), Message(me: true), Message(),
+    Message(me: true), Message(me: true),
     Message(text: "Привет! Ого ты тоже живешь в этом районе? Ни разу тебя не видела! Я Анастасия :) Ищу новые знакомства может и даже вторую половинку. Это я на фото, жду ваши!", reactions: [Reaction(name: "🤡", value: 5), Reaction(name: "🎃", value: 77)]
            ),
     Message(text: "Ну все, здесь я больше не нужна. Фея рассыпанного пшена, голодных голубей и счастливых девочек полетела дальше. Помните: каждую минуту все может измениться к лучшему. Подождите. Или измените сами.", reactions: [Reaction(name: "🔥"), Reaction(name: "👻", value: 48), Reaction(name: "👏", value: 48), Reaction(name: "👍", value: 48), Reaction(name: "👎", value: 48), Reaction(name: "✌️", value: 948), Reaction(name: "🙀", value: 48), Reaction(name: "😿", value: 48), Reaction(name: "😾", value: 9948), Reaction(name: "✊", value: 98648)]
