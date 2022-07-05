@@ -6,35 +6,31 @@
 //
 
 import UIKit
+import SnapKit
 
 class MessageCell: UICollectionViewCell, SelfConfiguringMessage {
   static var reuseIdentifier: String = "MessageCell"
-  let title = UILabel()
-  let label = UIView()
+  let title: UILabel = {
+    $0.font = .commissioner12()
+    return $0
+  }(UILabel())
 
   override init(frame: CGRect) {
     super.init(frame: frame)
-    title.translatesAutoresizingMaskIntoConstraints = false
-    label.layer.cornerRadius = 16
-    label.clipsToBounds = true
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.backgroundColor = .systemGray6
-    contentView.addSubview(label)
-    label.addSubview(title)
-    NSLayoutConstraint.activate([
-      label.topAnchor.constraint(equalTo: contentView.topAnchor),
-      label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-      label.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-    ])
-    NSLayoutConstraint.activate([
-      title.topAnchor.constraint(equalTo: label.topAnchor, constant: 10),
-      title.leadingAnchor.constraint(equalTo: label.leadingAnchor, constant: 10),
-      title.bottomAnchor.constraint(equalTo: label.bottomAnchor, constant: -10),
-      title.trailingAnchor.constraint(equalTo: label.trailingAnchor, constant: -10)
-    ])
+    contentView.layer.cornerRadius = 16
+    contentView.clipsToBounds = true
+    contentView.backgroundColor = #colorLiteral(red: 0.9623864293, green: 0.9687970281, blue: 0.9719694257, alpha: 1)
+    contentView.addSubview(title)
+    setupConstraints()
   }
   
+  func setupConstraints() {
+    title.snp.makeConstraints {
+      $0.top.bottom.equalToSuperview().inset(9)
+      $0.leading.trailing.equalToSuperview().inset(12)
+      
+    }
+  }
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

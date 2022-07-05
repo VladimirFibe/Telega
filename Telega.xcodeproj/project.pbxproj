@@ -15,10 +15,14 @@
 		E925599728699FA300939E8B /* ReactionLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925599628699FA300939E8B /* ReactionLayout.swift */; };
 		E9642FB42872C70D0088FBDF /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9642FB32872C70D0088FBDF /* MessageCell.swift */; };
 		E9642FB62872C75B0088FBDF /* MessageHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9642FB52872C75B0088FBDF /* MessageHeaderView.swift */; };
+		E9642FB92872D1270088FBDF /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9642FB82872D1270088FBDF /* UIFont+Extensions.swift */; };
+		E9642FBC2872D17C0088FBDF /* Commissioner-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9642FBB2872D17C0088FBDF /* Commissioner-Regular.ttf */; };
+		E9642FBE2872D8260088FBDF /* Commissioner-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9642FBD2872D8260088FBDF /* Commissioner-Medium.ttf */; };
+		E9642FC02872DDAE0088FBDF /* SectionBackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9642FBF2872DDAE0088FBDF /* SectionBackgroundDecorationView.swift */; };
+		E9642FC22872E7E10088FBDF /* MessageFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9642FC12872E7E10088FBDF /* MessageFooterView.swift */; };
 		E97B02672868DB8F00E5F4A5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B02662868DB8F00E5F4A5 /* AppDelegate.swift */; };
 		E97B02692868DB8F00E5F4A5 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B02682868DB8F00E5F4A5 /* SceneDelegate.swift */; };
 		E97B026B2868DB8F00E5F4A5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E97B026A2868DB8F00E5F4A5 /* ViewController.swift */; };
-		E97B026E2868DB8F00E5F4A5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E97B026C2868DB8F00E5F4A5 /* Main.storyboard */; };
 		E97B02702868DB9000E5F4A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E97B026F2868DB9000E5F4A5 /* Assets.xcassets */; };
 		E97B02732868DB9000E5F4A5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E97B02712868DB9000E5F4A5 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -31,11 +35,15 @@
 		E925599628699FA300939E8B /* ReactionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReactionLayout.swift; sourceTree = "<group>"; };
 		E9642FB32872C70D0088FBDF /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		E9642FB52872C75B0088FBDF /* MessageHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageHeaderView.swift; sourceTree = "<group>"; };
+		E9642FB82872D1270088FBDF /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
+		E9642FBB2872D17C0088FBDF /* Commissioner-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-Regular.ttf"; sourceTree = "<group>"; };
+		E9642FBD2872D8260088FBDF /* Commissioner-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-Medium.ttf"; sourceTree = "<group>"; };
+		E9642FBF2872DDAE0088FBDF /* SectionBackgroundDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionBackgroundDecorationView.swift; sourceTree = "<group>"; };
+		E9642FC12872E7E10088FBDF /* MessageFooterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageFooterView.swift; sourceTree = "<group>"; };
 		E97B02632868DB8F00E5F4A5 /* Telega.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Telega.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E97B02662868DB8F00E5F4A5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E97B02682868DB8F00E5F4A5 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E97B026A2868DB8F00E5F4A5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E97B026D2868DB8F00E5F4A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E97B026F2868DB9000E5F4A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E97B02722868DB9000E5F4A5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E97B02742868DB9000E5F4A5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -53,6 +61,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E9642FB72872D10E0088FBDF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				E9642FB82872D1270088FBDF /* UIFont+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		E9642FBA2872D1670088FBDF /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E9642FBD2872D8260088FBDF /* Commissioner-Medium.ttf */,
+				E9642FBB2872D17C0088FBDF /* Commissioner-Regular.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		E97B025A2868DB8F00E5F4A5 = {
 			isa = PBXGroup;
 			children = (
@@ -72,17 +97,20 @@
 		E97B02652868DB8F00E5F4A5 /* Telega */ = {
 			isa = PBXGroup;
 			children = (
+				E9642FBA2872D1670088FBDF /* Fonts */,
+				E9642FB72872D10E0088FBDF /* Extensions */,
 				E97B02662868DB8F00E5F4A5 /* AppDelegate.swift */,
 				E97B02682868DB8F00E5F4A5 /* SceneDelegate.swift */,
 				E97B026A2868DB8F00E5F4A5 /* ViewController.swift */,
 				E925598E2869918000939E8B /* Message.swift */,
 				E9642FB32872C70D0088FBDF /* MessageCell.swift */,
 				E9642FB52872C75B0088FBDF /* MessageHeaderView.swift */,
+				E9642FC12872E7E10088FBDF /* MessageFooterView.swift */,
+				E9642FBF2872DDAE0088FBDF /* SectionBackgroundDecorationView.swift */,
 				E92559922869928200939E8B /* ChatCell.swift */,
 				E9229C2E286AEE920096788E /* ChatFlowLayout.swift */,
 				E925599628699FA300939E8B /* ReactionLayout.swift */,
 				E9229C2C286AEE470096788E /* ReactionCell.swift */,
-				E97B026C2868DB8F00E5F4A5 /* Main.storyboard */,
 				E97B026F2868DB9000E5F4A5 /* Assets.xcassets */,
 				E97B02712868DB9000E5F4A5 /* LaunchScreen.storyboard */,
 				E97B02742868DB9000E5F4A5 /* Info.plist */,
@@ -156,7 +184,8 @@
 			files = (
 				E97B02732868DB9000E5F4A5 /* LaunchScreen.storyboard in Resources */,
 				E97B02702868DB9000E5F4A5 /* Assets.xcassets in Resources */,
-				E97B026E2868DB8F00E5F4A5 /* Main.storyboard in Resources */,
+				E9642FBE2872D8260088FBDF /* Commissioner-Medium.ttf in Resources */,
+				E9642FBC2872D17C0088FBDF /* Commissioner-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,10 +197,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				E97B026B2868DB8F00E5F4A5 /* ViewController.swift in Sources */,
+				E9642FB92872D1270088FBDF /* UIFont+Extensions.swift in Sources */,
 				E9229C2D286AEE470096788E /* ReactionCell.swift in Sources */,
 				E925598F2869918000939E8B /* Message.swift in Sources */,
+				E9642FC02872DDAE0088FBDF /* SectionBackgroundDecorationView.swift in Sources */,
 				E97B02672868DB8F00E5F4A5 /* AppDelegate.swift in Sources */,
 				E925599728699FA300939E8B /* ReactionLayout.swift in Sources */,
+				E9642FC22872E7E10088FBDF /* MessageFooterView.swift in Sources */,
 				E9229C2F286AEE920096788E /* ChatFlowLayout.swift in Sources */,
 				E97B02692868DB8F00E5F4A5 /* SceneDelegate.swift in Sources */,
 				E92559932869928200939E8B /* ChatCell.swift in Sources */,
@@ -183,14 +215,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E97B026C2868DB8F00E5F4A5 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E97B026D2868DB8F00E5F4A5 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E97B02712868DB9000E5F4A5 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -328,7 +352,6 @@
 				INFOPLIST_FILE = Telega/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -356,7 +379,6 @@
 				INFOPLIST_FILE = Telega/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

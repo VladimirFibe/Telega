@@ -6,31 +6,54 @@
 //
 
 import UIKit
+import SnapKit
 
 class MessageHeaderView: UICollectionReusableView {
-   static let reuseIdentifier = "MessageHeader"
-  let content = UILabel()
+  static let reuseIdentifier = "MessageHeader"
+  
+  let nameLabel: UILabel = {
+    $0.text = "nastya_shuller"
+    $0.font = .commissionerMedium12()
+    $0.textAlignment = .left
+    $0.textColor = .black
+    return $0
+  }(UILabel())
+  
+  let content: UILabel = {
+    $0.numberOfLines = 0
+    $0.font = .commissioner14()
+    return $0
+  }(UILabel())
+  
+  let messageImageView: UIImageView = {
+    $0.contentMode = .scaleAspectFill
+    $0.layer.masksToBounds = true
+    return $0
+  }(UIImageView(image: UIImage(named: "woman")))
+  
+  lazy var stack: UIStackView = {
+    $0.axis = .vertical
+    $0.spacing = 5
+    return $0
+  }(UIStackView(arrangedSubviews: [nameLabel, messageImageView, content]))
+  
   override init(frame: CGRect) {
     super.init(frame: frame)
-    let separator = UIView(frame: .zero)
-    separator.translatesAutoresizingMaskIntoConstraints = false
-    separator.backgroundColor = .quaternaryLabel
-    content.numberOfLines = 0
-    
-    
-    let stackView = UIStackView(arrangedSubviews: [separator, content])
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    stackView.axis = .vertical
-    addSubview(stackView)
-    NSLayoutConstraint.activate([
-      separator.heightAnchor.constraint(equalToConstant: 1),
-      stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      stackView.topAnchor.constraint(equalTo: topAnchor),
-      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
-    ])
+    setupViews()
+    setupConstraints()
   }
-  
+  func setupViews() {
+    addSubview(stack)
+  }
+  func setupConstraints() {
+    messageImageView.snp.makeConstraints {
+      $0.height.equalTo(150)
+    }
+    stack.snp.makeConstraints {
+      $0.leading.bottom.equalToSuperview()
+      $0.top.trailing.equalToSuperview().inset(10)
+    }
+  }
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
