@@ -11,6 +11,7 @@ import SnapKit
 struct ElementKind {
     static let badge = "badge-element-kind"
     static let background = "background-element-kind"
+  static let mebackground = "me-background-element-kind"
     static let sectionHeader = "section-header-element-kind"
     static let sectionFooter = "section-footer-element-kind"
     static let layoutHeader = "layout-header-element-kind"
@@ -30,32 +31,38 @@ class ViewController: UIViewController {
 }
 extension ViewController {
   func createLayout() -> UICollectionViewLayout {
-    let itemSize = NSCollectionLayoutSize(
-      widthDimension: .estimated(90),
-      heightDimension: .estimated(30))
-    let item = NSCollectionLayoutItem(layoutSize: itemSize)
-    item.edgeSpacing = NSCollectionLayoutEdgeSpacing(
-      leading: .fixed(0), top: .fixed(5),
-      trailing: .fixed(5), bottom: .fixed(0))
-    let groupSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(1),
-      heightDimension: .estimated(60))
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-    
-    let section = NSCollectionLayoutSection(group: group)
-    let headerSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(1), heightDimension: .estimated(30))
-    let footerSize = NSCollectionLayoutSize(
-      widthDimension: .fractionalWidth(1), heightDimension: .estimated(30))
-    let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: ElementKind.sectionHeader, alignment: .top)
-    let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: ElementKind.sectionFooter, alignment: .bottom)
-    let sectionBackgroundDecoration = NSCollectionLayoutDecorationItem.background(
-      elementKind: ElementKind.background)
-    section.decorationItems = [sectionBackgroundDecoration]
-    section.boundarySupplementaryItems = [sectionHeader, sectionFooter]
-    section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 10)
-    let layout = UICollectionViewCompositionalLayout(section: section)
-    layout.register(SectionBackgroundDecorationView.self, forDecorationViewOfKind: ElementKind.background)
+    let layout = UICollectionViewCompositionalLayout { sectionIndex, layoutEnvironment in
+      let message = self.messages[sectionIndex]
+      let me = message.me
+      let itemSize = NSCollectionLayoutSize(
+        widthDimension: .estimated(90),
+        heightDimension: .estimated(30))
+      let item = NSCollectionLayoutItem(layoutSize: itemSize)
+      item.edgeSpacing = NSCollectionLayoutEdgeSpacing(
+        leading: .fixed(0), top: .fixed(5),
+        trailing: .fixed(5), bottom: .fixed(0))
+      let groupSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1),
+        heightDimension: .estimated(60))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+      group.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 70, bottom: 0, trailing: 20)
+      let section = NSCollectionLayoutSection(group: group)
+      let headerSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1), heightDimension: .estimated(30))
+      let footerSize = NSCollectionLayoutSize(
+        widthDimension: .fractionalWidth(1), heightDimension: .estimated(30))
+      let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: headerSize, elementKind: ElementKind.sectionHeader, alignment: .top)
+      let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(layoutSize: footerSize, elementKind: ElementKind.sectionFooter, alignment: .bottomTrailing)
+      let sectionBackgroundDecoration = NSCollectionLayoutDecorationItem.background(
+        elementKind: me ? ElementKind.mebackground : ElementKind.background)
+      sectionBackgroundDecoration.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 50, bottom: 0, trailing: 0)
+      section.decorationItems = [sectionBackgroundDecoration]
+      section.boundarySupplementaryItems = [sectionHeader, sectionFooter]
+      section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 10)
+      return section
+    }
+      layout.register(MeBackgroundDecorationView.self, forDecorationViewOfKind: ElementKind.mebackground)
+      layout.register(SectionBackgroundDecorationView.self, forDecorationViewOfKind: ElementKind.background)
     return layout
   }
 }

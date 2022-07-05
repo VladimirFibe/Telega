@@ -9,6 +9,14 @@ import UIKit
 import SnapKit
 
 class TitleSupplementaryView: UICollectionReusableView {
+  let avatarImageView: UIImageView = {
+    $0.layer.cornerRadius = 15.0
+    $0.clipsToBounds = true
+    $0.translatesAutoresizingMaskIntoConstraints = false
+    $0.widthAnchor.constraint(equalToConstant: 30).isActive = true
+    $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    return $0
+  }(UIImageView(image: UIImage(named: "woman")))
   let nameLabel: UILabel = {
     $0.text = "nastya_shuller"
     $0.font = .commissionerMedium12()
@@ -38,7 +46,7 @@ class TitleSupplementaryView: UICollectionReusableView {
     $0.contentMode = .scaleAspectFill
     $0.layer.masksToBounds = true
     return $0
-  }(UIImageView(image: UIImage(named: "woman")))
+  }(UIImageView(image: UIImage(named: "woman"))) // image: UIImage(named: "woman")
   
   lazy var stack: UIStackView = {
     $0.axis = .vertical
@@ -63,6 +71,7 @@ class TitleSupplementaryView: UICollectionReusableView {
   
   func setupFooterViews() {
     addSubview(timeLabel)
+    addSubview(avatarImageView)
     setupFooterConstraints()
   }
   func setupHeaderViews() {
@@ -84,13 +93,18 @@ class TitleSupplementaryView: UICollectionReusableView {
       $0.height.equalTo(150)
     }
     stack.snp.makeConstraints {
-      $0.leading.bottom.equalToSuperview()
+      $0.leading.equalToSuperview().offset(70)
+      $0.bottom.equalToSuperview()
       $0.top.trailing.equalToSuperview().inset(10)
     }
   }
   func setupFooterConstraints() {
     timeLabel.snp.makeConstraints {
-      $0.edges.equalToSuperview().inset(10)
+      $0.top.right.bottom.equalToSuperview().inset(10)
+    }
+    avatarImageView.snp.makeConstraints {
+      $0.bottom.equalToSuperview()
+      $0.left.equalToSuperview().offset(10)
     }
   }
   func configure(with kind: String, message: Message) {

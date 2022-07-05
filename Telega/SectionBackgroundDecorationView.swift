@@ -9,6 +9,7 @@ import UIKit
 
 class SectionBackgroundDecorationView: UICollectionReusableView {
   static let reuseIdentifier = "SectionBackgroundDecorationView"
+
   let bubbleImageView: UIImageView = {
     $0.tintColor = .white // UIColor(white: 0.9, alpha: 1)
     return $0
@@ -17,6 +18,7 @@ class SectionBackgroundDecorationView: UICollectionReusableView {
   override init(frame: CGRect) {
     super.init(frame: frame)
     addSubview(bubbleImageView)
+
     bubbleImageView.snp.makeConstraints {
       $0.edges.equalToSuperview()
     }

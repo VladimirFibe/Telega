@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E9229C32286AEF810096788E /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E9229C31286AEF810096788E /* SnapKit */; };
 		E925598F2869918000939E8B /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = E925598E2869918000939E8B /* Message.swift */; };
+		E937F08E2874578500322D25 /* MeBackgroundDecorationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E937F08D2874578500322D25 /* MeBackgroundDecorationView.swift */; };
 		E9642FB42872C70D0088FBDF /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9642FB32872C70D0088FBDF /* MessageCell.swift */; };
 		E9642FB92872D1270088FBDF /* UIFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9642FB82872D1270088FBDF /* UIFont+Extensions.swift */; };
 		E9642FBC2872D17C0088FBDF /* Commissioner-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E9642FBB2872D17C0088FBDF /* Commissioner-Regular.ttf */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		E925598E2869918000939E8B /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		E937F08D2874578500322D25 /* MeBackgroundDecorationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeBackgroundDecorationView.swift; sourceTree = "<group>"; };
 		E9642FB32872C70D0088FBDF /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		E9642FB82872D1270088FBDF /* UIFont+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Extensions.swift"; sourceTree = "<group>"; };
 		E9642FBB2872D17C0088FBDF /* Commissioner-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Commissioner-Regular.ttf"; sourceTree = "<group>"; };
@@ -96,6 +98,7 @@
 				E9642FB32872C70D0088FBDF /* MessageCell.swift */,
 				E9642FC12872E7E10088FBDF /* TitleSupplementaryView.swift */,
 				E9642FBF2872DDAE0088FBDF /* SectionBackgroundDecorationView.swift */,
+				E937F08D2874578500322D25 /* MeBackgroundDecorationView.swift */,
 				E97B026F2868DB9000E5F4A5 /* Assets.xcassets */,
 				E97B02712868DB9000E5F4A5 /* LaunchScreen.storyboard */,
 				E97B02742868DB9000E5F4A5 /* Info.plist */,
@@ -184,6 +187,7 @@
 				E97B026B2868DB8F00E5F4A5 /* ViewController.swift in Sources */,
 				E9642FB92872D1270088FBDF /* UIFont+Extensions.swift in Sources */,
 				E925598F2869918000939E8B /* Message.swift in Sources */,
+				E937F08E2874578500322D25 /* MeBackgroundDecorationView.swift in Sources */,
 				E9642FC02872DDAE0088FBDF /* SectionBackgroundDecorationView.swift in Sources */,
 				E97B02672868DB8F00E5F4A5 /* AppDelegate.swift in Sources */,
 				E9642FC22872E7E10088FBDF /* TitleSupplementaryView.swift in Sources */,
