@@ -1,0 +1,16 @@
+PODS:
+  - KKPinCodeTextField (1.0.0)
+
+DEPENDENCIES:
+  - KKPinCodeTextField (~> 1.0.0)
+
+SPEC REPOS:
+  trunk:
+    - KKPinCodeTextField
+
+SPEC CHECKSUMS:
+  KKPinCodeTextField: 63a1fb841fd6a412cf664ef64dc065fc6767bd3c
+
+PODFILE CHECKSUM: 960cf9516cd9618ad578cbe8be7ea3496cf1b58a
+
+COCOAPODS: 1.11.3
